@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+    .main{
+    height: 470px;
+    width: 315px;
+    margin: 5px auto 10px auto;
+    background-color: #dee1e8;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+
+}
+.input input{
+width: 280px;
+height: 125px;
+align-items: center;
+border-radius: 5px;
+border-style: none;
+background-color: #dee1e8;
+box-shadow: inset 10px 10px 10px #ccc,inset -10px -10px 10px #ccc;
+margin-bottom: 15px;
+font-size: 40px;
+text-align: right;
+
+}
+.btn{
+    width: 285px;
+    height: 300px;
+    /* background: #000; */
+    display: flex;
+    flex-direction: column;
+}
+.btn .bta{
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+.btn .bta button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+button{
+margin: 5px 8px;
+border-style: none;
+box-shadow:0px 0px 5px #ccc, -5px -2px 10px #ccc;
+background-color: #dee1e8;
+}
+.pink{
+    color: deeppink;
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="input">
+            <input type="text" id="input" >
+        </div>
+        <div class="btn">
+            <div class="bta">
+                <button class="button">AC</button>
+                <button class="button">C</button>
+                <button class="button">%</button>
+                <button class="pink button">/</button>
+            </div>
+
+            <div class="bta">
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="pink button">*</button>
+            </div>
+
+            <div class="bta">
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="pink button">-</button>
+            </div>
+
+            <div class="bta">
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="pink button">+</button>
+            </div>
+            <div class="bta">
+                <button class="button">0</button>
+                <button class="button">.</button>
+                <button class="pink button" style="
+                width: 120px; border-radius: 10px;
+            ">=</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var text = '';
+        let buttons = document.querySelectorAll('.button');
+       // document.getElementById('input').style.direction='rtl';
+        Array.from(buttons).forEach((btn)=>{
+            btn.addEventListener('click',(e)=>{
+                if(e.target.innerText=='='){
+                    //document.getElementById('input').style.direction='rtl';
+                    text = eval(text);
+                    console.log(text)
+                    document.querySelector('input').value = text;
+                }
+                else if(e.target.innerText=='AC'){
+                    text = "";
+                    console.log(text)
+                    document.querySelector('input').value = "";
+
+                }
+                else if(e.target.innerText=='C'){
+                    
+                    text = text.slice(0,text.length-1)
+                    document.querySelector('input').value = text;
+                }
+                else{
+         //           document.getElementById('input').style.direction='rtl';
+                    text =text + e.target.innerText; 
+                    document.querySelector('input').value = text;
+                    console.log(e.target);
+                    console.log(text)
+                     
+                }
+            })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
